@@ -65,7 +65,7 @@ public class StateCensusAnalyzerTest {
     public void givenStateCodeCSVFile_WhenNumberOfRecordNOtMatches_ShouldReturnException() throws StateCsvException, IOException {
         StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
         try {
-            int numberOfRecords = stateCensusAnalyser.stateCensusCsvFile();
+            int numberOfRecords = stateCensusAnalyser.stateCodeCsvFile();
         } catch (StateCsvException e) {
             e.printStackTrace();
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE, e.type);
