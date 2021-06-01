@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 
 public class StateCensusAnalyzer {
-    public int numberOfEntries() throws StateCsvException, IOException {
+    public int stateCensusCsvFile() throws StateCsvException, IOException {
         int count = 0;
         try {
             Reader reader = Files
@@ -36,5 +36,31 @@ public class StateCensusAnalyzer {
         }
         return  count;
     }
+    public int stateCodeCsvFile() throws StateCsvException, IOException {
+        int count = 0;
+        try {
+            Reader reader = Files
+                    .newBufferedReader(Paths.get("C:\\Users\\tanya\\Downloads\\StateCode.csv"));
+
+            CSVReader csvReader = new CSVReader(reader);
+            String records[];
+            while ((records = csvReader.readNext()) != null) {
+                for (String record : records) {
+                    System.out.println(record);
+
+                }
+                count += 1;
+            }
+            csvReader.close();
+        } catch (NoSuchFileException noSuchFileException) {
+            throw new StateCsvException(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE,
+                    "!!Unable to retrieve file , no such file exist!!");
+
+        } catch (RuntimeException runtimeException){
+            throw new StateCsvException(StateCsvException.StateCsvExceptionType.INCORRECT_ENTRIES,"!!File Contains Incorrect Data!!");
+        }
+        return  count;
+    }
+
 
 }
