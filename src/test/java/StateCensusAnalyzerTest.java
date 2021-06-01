@@ -61,4 +61,14 @@ public class StateCensusAnalyzerTest {
         int numberOfRecords = stateCensusAnalyser.stateCodeCsvFile();
         Assertions.assertEquals(38, numberOfRecords);
     }
+    @Test
+    public void givenStateCodeCSVFile_WhenNumberOfRecordNOtMatches_ShouldReturnException() throws StateCsvException, IOException {
+        StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+        try {
+            int numberOfRecords = stateCensusAnalyser.stateCensusCsvFile();
+        } catch (StateCsvException e) {
+            e.printStackTrace();
+            Assertions.assertEquals(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE, e.type);
+        }
+    }
 }
