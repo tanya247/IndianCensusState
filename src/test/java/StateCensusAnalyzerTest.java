@@ -71,4 +71,15 @@ public class StateCensusAnalyzerTest {
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE, e.type);
         }
     }
+    @Test
+    public void givenStateCodeCSVFile_WhenCorrect_ButTypeIncorrect_ShouldReturnException()
+            throws StateCsvException, IOException {
+        StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+        try {
+            int numberOfRecords = stateCensusAnalyser.stateCensusCsvFile();
+        } catch (StateCsvException e) {
+            e.printStackTrace();
+            Assertions.assertEquals(StateCsvException.StateCsvExceptionType.INCORRECT_ENTRIES, e.type);
+        }
+    }
 }
