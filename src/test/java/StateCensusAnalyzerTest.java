@@ -33,4 +33,15 @@ public class StateCensusAnalyzerTest {
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.INCORRECT_ENTRIES, e.type);
         }
     }
+    @Test
+    public void givenCSVFile_WhenCorrect_ButDelimiterIncorrect_ShouldReturnException()
+            throws StateCsvException, IOException {
+        StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+        try {
+            int numberOfRecords = stateCensusAnalyser.numberOfEntries();
+        } catch (StateCsvException e) {
+            e.printStackTrace();
+            Assertions.assertEquals(StateCsvException.StateCsvExceptionType.DELIMETER_ISSUE, e.type);
+        }
+    }
 }
