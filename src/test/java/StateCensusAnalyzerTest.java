@@ -44,4 +44,15 @@ public class StateCensusAnalyzerTest {
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.DELIMETER_ISSUE, e.type);
         }
     }
+    @Test
+    public void givenCSVFile_WhenCorrect_ButCSVHeaderIncorrect_ShouldReturnException()
+            throws StateCsvException, IOException {
+        StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+        try {
+            int numberOfRecords = stateCensusAnalyser.numberOfEntries();
+        } catch (StateCsvException e) {
+            e.printStackTrace();
+            Assertions.assertEquals(StateCsvException.StateCsvExceptionType.CSV_HEADER_INCORRECT, e.type);
+        }
+    }
 }
