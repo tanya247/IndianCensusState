@@ -65,7 +65,7 @@ public class StateCensusAnalyzerTest {
     public void givenStateCodeCSVFile_WhenNumberOfRecordNOtMatches_ShouldReturnException() throws StateCsvException, IOException {
         StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
         try {
-            int numberOfRecords = stateCensusAnalyser.stateCensusCsvFile();
+            int numberOfRecords = stateCensusAnalyser.stateCodeCsvFile();
         } catch (StateCsvException e) {
             e.printStackTrace();
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE, e.type);
@@ -76,10 +76,21 @@ public class StateCensusAnalyzerTest {
             throws StateCsvException, IOException {
         StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
         try {
-            int numberOfRecords = stateCensusAnalyser.stateCensusCsvFile();
+            int numberOfRecords = stateCensusAnalyser.stateCodeCsvFile();
         } catch (StateCsvException e) {
             e.printStackTrace();
             Assertions.assertEquals(StateCsvException.StateCsvExceptionType.INCORRECT_ENTRIES, e.type);
+        }
+    }
+    @Test
+    public void givenStateCodeCSVFile_WhenCorrect_ButDelimiterIncorrect_ShouldReturnException()
+            throws StateCsvException, IOException {
+        StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+        try {
+            int numberOfRecords = stateCensusAnalyser.stateCodeCsvFile();
+        } catch (StateCsvException e) {
+            e.printStackTrace();
+            Assertions.assertEquals(StateCsvException.StateCsvExceptionType.DELIMETER_ISSUE, e.type);
         }
     }
 }
