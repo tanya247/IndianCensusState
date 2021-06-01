@@ -2,14 +2,16 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Iterator;
 
 public class StateCensusAnalyzer {
-    public int numberOfEntries(){
+    public int numberOfEntries() throws StateCsvException, IOException {
         int count = 0;
         try {
             Reader reader = Files
@@ -25,8 +27,12 @@ public class StateCensusAnalyzer {
                 count += 1;
             }
             csvReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (NoSuchFileException noSuchFileException) {
+            throw new StateCsvException(StateCsvException.StateCsvExceptionType.NO_SUCH_FILE,
+                    "!!Unable to retrieve file , no such file exist!!");
+
+        } catch (RuntimeException runtimeException){
+            throw new StateCsvException(StateCsvException.StateCsvExceptionType.INCORRECT_ENTRIES,"!!File Contains Incorrect Data!!");
         }
         return  count;
     }

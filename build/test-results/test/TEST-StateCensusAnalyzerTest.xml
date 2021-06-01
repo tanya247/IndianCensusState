@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StateCensusAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T17:37:07" hostname="LAPTOP-Q9T3UUC8" time="0.036">
+<testsuite name="StateCensusAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T18:43:53" hostname="LAPTOP-Q9T3UUC8" time="0.041">
   <properties/>
-  <testcase name="givenCSVFile_WhenNumberOfRecordMatches_ShouldReturnTrue()" classname="StateCensusAnalyzerTest" time="0.036"/>
+  <testcase name="givenCSVFile_WhenNumberOfRecordNOtMatches_ShouldReturnException()" classname="StateCensusAnalyzerTest" time="0.041"/>
   <system-out><![CDATA[State
 Population
 AreaInSqKm
