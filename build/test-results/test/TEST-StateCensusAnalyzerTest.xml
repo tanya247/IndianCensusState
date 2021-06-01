@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StateCensusAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T19:29:17" hostname="LAPTOP-Q9T3UUC8" time="0.031">
+<testsuite name="StateCensusAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T19:31:30" hostname="LAPTOP-Q9T3UUC8" time="0.038">
   <properties/>
-  <testcase name="givenStateCodeCSVFile_WhenCorrect_ButDelimiterIncorrect_ShouldReturnException()" classname="StateCensusAnalyzerTest" time="0.031"/>
+  <testcase name="givenStateCodeCSVFile_WhenCorrect_ButCSVHeaderIncorrect_ShouldReturnException()" classname="StateCensusAnalyzerTest" time="0.038"/>
   <system-out><![CDATA[SrNo
 State Name
 TIN
